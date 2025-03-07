@@ -6,7 +6,17 @@ import Types from "./components/Types";
 import Moves from "./components/Moves";
 import Abilities from "./components/Abilities";
 
+
 function App() {
+
+  const infoApi = () => {
+    return (
+      <div>
+        <p>BIENVENIDO A LA POKEAPI HECHA POR SAMUEL</p>
+      </div>
+    )
+  }
+  
 
   return (
     <div className="App">
@@ -55,10 +65,9 @@ function App() {
           </nav>
           <Routes>
             <Route path="/Pokemons" element={<Pokemons />}></Route>
-            <Route path="/Home" element={""}></Route>
+            <Route path="/Home" element={infoApi()}></Route>
           </Routes>
         </Router>
-        
       </header>
       <script
         src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
