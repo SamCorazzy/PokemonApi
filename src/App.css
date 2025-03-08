@@ -36,3 +36,129 @@
     transform: rotate(360deg);
   }
 }
+
+/* Fire (Fuego) */
+.card.fire {
+  background-color: #f08030;  /* Color naranja */
+  color: black;
+}
+
+/* Water (Agua) */
+.card.water {
+  background-color: #6890f0;  /* Color azul */
+  color: black;
+}
+
+/* Grass (Planta) */
+.card.grass {
+  background-color: #78c850;  /* Color verde */
+  color: black;
+}
+
+/* Electric (Eléctrico) */
+.card.electric {
+  background-color: #f8d030;  /* Color amarillo */
+  color: black;
+}
+
+/* Psychic (Psíquico) */
+.card.psychic {
+  background-color: #f85888;  /* Color rosa */
+  color: black;
+}
+
+/* Ice (Hielo) */
+.card.ice {
+  background-color: #98d8d8;  /* Color celeste */
+  color: black;
+}
+
+/* Dragon (Dragón) */
+.card.dragon {
+  background-color: #7038f8;  /* Color morado */
+  color: black;
+}
+
+/* Dark (Siniestro) */
+.card.dark {
+  background-color: #705848;  /* Color oscuro (marrón) */
+  color: black;
+}
+
+/* Fairy (Hada) */
+.card.fairy {
+  background-color: #f8a0f8;  /* Color rosa claro */
+  color: black;
+}
+
+/* Fighting (Lucha) */
+.card.fighting {
+  background-color: #c03028;  /* Color rojo */
+  color: black;
+}
+
+/* Flying (Volador) */
+.card.flying {
+  background-color: #a890f0;  /* Color azul claro */
+  color: black;
+}
+
+/* Poison (Veneno) */
+.card.poison {
+  background-color: #a040a0;  /* Color morado */
+  color: black;
+}
+
+/* Bug (Bicho) */
+.card.bug {
+  background-color: #a8b820;  /* Color verde */
+  color: black;
+}
+
+/* Ghost (Fantasma) */
+.card.ghost {
+  background-color: #705898;  /* Color morado oscuro */
+  color: black;
+}
+
+/* Normal (Normal) */
+.card.normal {
+  background-color: #a8a878;  /* Color gris claro */
+  color: black;
+}
+
+/* Rock (Roca) */
+.card.rock {
+  background-color: #b8a038;  /* Color marrón */
+  color: black;
+}
+
+/* Steel (Acero) */
+.card.steel {
+  background-color: #b8b8d0;  /* Color gris acero */
+  color: black;
+}
+
+/* Ground (Tierra) */
+.card.ground {
+  background-color: #e0c068;  /* Color amarillo oscuro */
+  color: black;
+}
+
+/* Stellar (Estelar) */
+.card.stellar {
+  background-color: #8e44ad;  /* Azul oscuro */
+  color: black;
+}
+
+/* Unknown (Desconocido) */
+.card.unknown {
+  background-color: #2c3e50;  /* Gris oscuro */
+  color: black;
+}
+
+/* Shadow (Sombra) */
+.card.shadow {
+  background-color: #000000;  /* Negro */
+  color: white;
+}

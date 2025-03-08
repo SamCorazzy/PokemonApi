@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Traduccion from './typesTraduction';
+import Mayusculas from './capital_letters';
 
 export default function Pokemons() {
     const [detalles, setdetalles] = useState([]);
@@ -22,14 +23,9 @@ export default function Pokemons() {
         setNum( num => num >= 0 ? setNum(num - 10) : 0 );
     }
 
-    const mayusculas = (name) =>{
-        name = name.charAt(0).toUpperCase() + name.slice(1);
-        return name;
-    }
-
     useEffect(() => {
         const reqApi = async () => {
-            console.log(num);
+            // console.log(num);
             const api = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=${num}`);
             const pokemonApi = await api.json();
           // Obtener los detalles de cada Pokémon después de obtener los nombres
@@ -51,9 +47,9 @@ export default function Pokemons() {
             <div className="row justify-content-center mx-auto">
                 {detalles.map((pokemon, index) => (
                     <div class="card alert alert-primary mr-3 mx-auto border border-primary" style={{ width: '300px', height: 'auto' }} key={index}>
-                        <img src={pokemon.sprites.front_default} class="card-img-top mx-auto" alt={pokemon.name} title={mayusculas(pokemon.name)} style={{ width: 'auto', height: 'auto' }} ></img>
+                        <img src={pokemon.sprites.front_default} class="card-img-top mx-auto" alt={pokemon.name}  title={Mayusculas({ word: pokemon.name })} style={{ width: 'auto', height: 'auto' }} ></img>
                         <div class="card-body">
-                            <h5 class="card-title"> {mayusculas(pokemon.name)} </h5>
+                            <h5 class="card-title"> <Mayusculas word={pokemon.name} /> </h5>
                             <p class="card-text"> Pokemon #{pokemon.id} </p>
                             <p class="card-text">Altura: {pokemon.height/10} m </p>
                             <p class="card-text">Peso: {pokemon.weight/10} Kg</p>

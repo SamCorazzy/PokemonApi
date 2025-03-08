@@ -45,9 +45,9 @@ function App() {
                     </Link>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <Link class="nav-link" to="/Types">
                       TIPÓS
-                    </a>
+                    </Link>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">
@@ -64,8 +64,9 @@ function App() {
             </div>
           </nav>
           <Routes>
-            <Route path="/Pokemons" element={<Pokemons />}></Route>
             <Route path="/Home" element={infoApi()}></Route>
+            <Route path="/Pokemons" element={<Pokemons />}></Route>
+            <Route path="/Types" element={<Types />}></Route>
           </Routes>
         </Router>
       </header>

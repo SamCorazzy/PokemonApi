@@ -18,6 +18,9 @@ const tiposTraduccion = {
     rock: "Roca",
     steel: "Acero",
     ground: "Tierra",
+    stellar: "Astral",
+    unknown: "Desconocido",
+    shadow: "Oscuro"
     // Agrega más tipos si es necesario
   };
   
