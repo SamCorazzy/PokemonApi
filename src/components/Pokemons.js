@@ -5,6 +5,8 @@ import Mayusculas from './capital_letters';
 export default function Pokemons() {
     const [detalles, setdetalles] = useState([]);
     const [num, setNum] = useState(0);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     
     const obtenerPoke = async (info) =>{
@@ -15,44 +17,58 @@ export default function Pokemons() {
 
     const masPoke = async () =>{
         setNum(num + 10);
-        console.log(num);
+        window.scrollTo({ top: 0, behavior: "smooth" }); // Desplaza hacia arriba con animación
+        // console.log(num);
         
     } 
 
     const menosPoke = async () =>{
         setNum( num => num >= 0 ? setNum(num - 10) : 0 );
+        window.scrollTo({ top: 0, behavior: "smooth" }); // Desplaza hacia arriba con animación
     }
 
     useEffect(() => {
         const reqApi = async () => {
             // console.log(num);
-            const api = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=${num}`);
-            const pokemonApi = await api.json();
-          // Obtener los detalles de cada Pokémon después de obtener los nombres
-            const detalles = await Promise.all(
-                pokemonApi.results.map(async (pokemon) => {
-                const info = await obtenerPoke(pokemon.name);
-                return info; // Devuelve la información detallada del Pokémon
-                })
-            );
-            setdetalles(detalles); // Almacena los detalles de los Pokémon
+            try {
+                const api = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=${num}`);
+                const pokemonApi = await api.json();
+                if (!api.ok) {
+                    throw new Error(`Error ${api.status}: ${api.statusText}`);
+                }
+              // Obtener los detalles de cada Pokémon después de obtener los nombres
+                const detalles = await Promise.all(
+                    pokemonApi.results.map(async (pokemon) => {
+                    const info = await obtenerPoke(pokemon.name);
+                    return info; // Devuelve la información detallada del Pokémon
+                    })
+                );
+                setdetalles(detalles); // Almacena los detalles de los Pokémon
+            } catch (error){
+                setError(error.message);
+            } finally {
+                setLoading(false);
+            }
         };
-    
         reqApi();
       }, [num]); // Solo se ejecuta una vez cuando el componente se monta
+
+      if (loading) return <div className="alert alert-success" role="alert"> Cargando datos...</div>;
+      if (error) return <div className="alert alert-danger" role="alert"> Error: {error}</div>;  
+
 
     return(
         <div className="container-fluid mt-5 mb-5">
             <h1 className="mt-5">Pokemon</h1>
             <div className="row justify-content-center mx-auto">
                 {detalles.map((pokemon, index) => (
-                    <div class="card alert alert-primary mr-3 mx-auto border border-primary" style={{ width: '300px', height: 'auto' }} key={index}>
-                        <img src={pokemon.sprites.front_default} class="card-img-top mx-auto" alt={pokemon.name}  title={Mayusculas({ word: pokemon.name })} style={{ width: 'auto', height: 'auto' }} ></img>
-                        <div class="card-body">
-                            <h5 class="card-title"> <Mayusculas word={pokemon.name} /> </h5>
-                            <p class="card-text"> Pokemon #{pokemon.id} </p>
-                            <p class="card-text">Altura: {pokemon.height/10} m </p>
-                            <p class="card-text">Peso: {pokemon.weight/10} Kg</p>
+                    <div className={`card alert alert-primary mr-3 mx-auto border border-primary ${pokemon.types[0].type.name}`} style={{ width: '300px', height: 'auto' }} key={index}>
+                        <img src={pokemon.sprites.front_default} className="card-img-top mx-auto" alt={pokemon.name}  title={Mayusculas({ word: pokemon.name })} style={{ width: 'auto', height: 'auto' }} ></img>
+                        <div className="card-body">
+                            <h5 className="card-title"> <Mayusculas word={pokemon.name} /> </h5>
+                            <p className="card-text"> Pokemon #{pokemon.id} </p>
+                            <p className="card-text">Altura: {pokemon.height/10} m </p>
+                            <p className="card-text">Peso: {pokemon.weight/10} Kg</p>
                             <p className="card-text"> Tipos: {pokemon.types.map((type) => Traduccion[type.type.name]).join(', ')}</p>{/* Este método se encarga de manejar tanto los Pokémon de un solo tipo como los de múltiples tipos, mostrando los tipos correctamente en la tarjeta de cada Pokémon. */}
 
                         </div>

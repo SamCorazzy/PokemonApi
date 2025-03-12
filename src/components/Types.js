@@ -4,6 +4,8 @@ import Traduccion from './typesTraduction';
 
 export default function Types() {
     const [types, setTypes] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     
     const nameTypes = async (nameType) =>{
         const api = await fetch(`https://pokeapi.co/api/v2/type/${nameType}`)
@@ -13,20 +15,34 @@ export default function Types() {
 
     useEffect(() => {
         const obtenerTypes = async () => {
-            const api = await fetch(`https://pokeapi.co/api/v2/type?limit=21&offset=0`);
-            const typesApi = await api.json();
+            try{
+                const api = await fetch(`https://pokeapi.co/api/v2/type?limit=21&offsoffset=0`);
+                // const api = await fetch("https://pokeapi.co/api/v2/typeX?limit=21&offset=0"); //prueba de errores
+                const typesApi = await api.json();
+                if (!api.ok) {
+                    throw new Error(`Error ${api.status}: ${api.statusText}`);
+                }
+                
+                const infoTypes = await Promise.all(
+                    typesApi.results.map(async (type) => {
+                        const info = await nameTypes(type.name);
+                        return info;
+                    })
+                );
+                setTypes(infoTypes);
+            } catch (error) {
+                setError(error.message);
+            } finally {
+                setLoading(false);
+            }
             
-            const infoTypes = await Promise.all(
-                typesApi.results.map(async (type) => {
-                    const info = await nameTypes(type.name);
-                    return info;
-                })
-            );
-            setTypes(infoTypes);
-        }
+        };
 
         obtenerTypes();
     }, []);
+
+    if (loading) return <div className="alert alert-success" role="alert"> Cargando datos...</div>;
+    if (error) return <div className="alert alert-danger" role="alert"> Error: {error}</div>;
 
 
     return (
@@ -36,11 +52,15 @@ export default function Types() {
                 {/* {console.log(types)} */}
                 {types.map((type, index) => (
                     <div className={`card alert alert-primary mr-3 mx-auto border border-primary ${type.name}`} style={{ width: '300px', height: 'auto' }} key={index}>
-                        <div class="card-body">
-                            <h5 class="card-title"> Tipo: {Traduccion[type.name]} </h5> {/* Traduciendo los tipos */}
-                            <p class="card-text">  </p>
-                            <p class="card-text"> </p>
-                            <p class="card-text"> </p>
+                        <div className="card-body">
+                            <h5 className="card-title"> Tipo: {Traduccion[type.name]} </h5> {/* Traduciendo los tipos */}
+                            {type.sprites?.["generation-viii"]?.["sword-shield"]?.name_icon ? (
+                                <img src={type.sprites["generation-viii"]["sword-shield"].name_icon}  style={{ width: '150px', height: 'auto' }} alt="Sprite Gen VIII"/>
+                            ) : (
+                            <p className="alert alert-danger">No disponible</p>
+                            )}
+                            <p className="card-text"> </p>
+                            <p className="card-text"> </p>
                         </div>
                     </div>
                 ))}

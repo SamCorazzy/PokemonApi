@@ -39,109 +39,109 @@
 
 /* Fire (Fuego) */
 .card.fire {
-  background-color: #f08030;  /* Color naranja */
+  background-color: #FF9D55;  /* Color naranja */
   color: black;
 }
 
 /* Water (Agua) */
 .card.water {
-  background-color: #6890f0;  /* Color azul */
+  background-color: #5090D6;  /* Color azul */
   color: black;
 }
 
 /* Grass (Planta) */
 .card.grass {
-  background-color: #78c850;  /* Color verde */
+  background-color: #63BC5A;  /* Color verde */
   color: black;
 }
 
 /* Electric (Eléctrico) */
 .card.electric {
-  background-color: #f8d030;  /* Color amarillo */
+  background-color: #F4D23C;  /* Color amarillo */
   color: black;
 }
 
 /* Psychic (Psíquico) */
 .card.psychic {
-  background-color: #f85888;  /* Color rosa */
+  background-color: #FA7179;  /* Color rosa */
   color: black;
 }
 
 /* Ice (Hielo) */
 .card.ice {
-  background-color: #98d8d8;  /* Color celeste */
+  background-color: #73CEC0;  /* Color celeste */
   color: black;
 }
 
 /* Dragon (Dragón) */
 .card.dragon {
-  background-color: #7038f8;  /* Color morado */
+  background-color: #0B6DC3;  /* Color morado */
   color: black;
 }
 
 /* Dark (Siniestro) */
 .card.dark {
-  background-color: #705848;  /* Color oscuro (marrón) */
+  background-color: #55505F;  /* Color oscuro (marrón) */
   color: black;
 }
 
 /* Fairy (Hada) */
 .card.fairy {
-  background-color: #f8a0f8;  /* Color rosa claro */
+  background-color: #EC8FE6;  /* Color rosa claro */
   color: black;
 }
 
 /* Fighting (Lucha) */
 .card.fighting {
-  background-color: #c03028;  /* Color rojo */
+  background-color: #CE416B;  /* Color rojo */
   color: black;
 }
 
 /* Flying (Volador) */
 .card.flying {
-  background-color: #a890f0;  /* Color azul claro */
+  background-color: #8DA6DD;  /* Color azul claro */
   color: black;
 }
 
 /* Poison (Veneno) */
 .card.poison {
-  background-color: #a040a0;  /* Color morado */
+  background-color: #AA6BC8;  /* Color morado */
   color: black;
 }
 
 /* Bug (Bicho) */
 .card.bug {
-  background-color: #a8b820;  /* Color verde */
+  background-color: #91C12F;  /* Color verde */
   color: black;
 }
 
 /* Ghost (Fantasma) */
 .card.ghost {
-  background-color: #705898;  /* Color morado oscuro */
+  background-color: #4D65AB;  /* Color morado oscuro */
   color: black;
 }
 
 /* Normal (Normal) */
 .card.normal {
-  background-color: #a8a878;  /* Color gris claro */
+  background-color: #919AA2;  /* Color gris claro */
   color: black;
 }
 
 /* Rock (Roca) */
 .card.rock {
-  background-color: #b8a038;  /* Color marrón */
+  background-color: #C5B78C;  /* Color marrón */
   color: black;
 }
 
 /* Steel (Acero) */
 .card.steel {
-  background-color: #b8b8d0;  /* Color gris acero */
+  background-color: #5A8EA2;  /* Color gris acero */
   color: black;
 }
 
 /* Ground (Tierra) */
 .card.ground {
-  background-color: #e0c068;  /* Color amarillo oscuro */
+  background-color: #D97845;  /* Color amarillo oscuro */
   color: black;
 }
 
