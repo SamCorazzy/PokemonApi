@@ -1,17 +1,18 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Pokemons from "./components/Pokemons";
 import Types from "./components/Types";
 import Moves from "./components/Moves";
 import Abilities from "./components/Abilities";
+import "./components.css"
 
 
 function App() {
+  
 
-  const infoApi = () => {
+  const InfoApi = () => {
     return (
-      <div>
+      <div >
         <p>BIENVENIDO A LA POKEAPI HECHA POR SAMUEL</p>
       </div>
     )
@@ -23,22 +24,21 @@ function App() {
     <header className="App-header">
        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
         <Router>
-          <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-            <div className="container-fluid">
-              <div className="col-2 text-left">
+          <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top letraMenu">
+            <div className="grid-container">
+              <div className="col small text-left d-flex align-items-center">
                 <Link className="navbar-brand" to="/">
-                  PokemonAPI
+                  POKEMONAPI
                 </Link>
               </div>
-              <div className="col-10">
+              <div className="col large">
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
                 </button>
-
-                <div className="col-10 collapse navbar-collapse justify-content-center" id="navbarNav">
+                <div className="collapse navbar-collapse text-left d-flex align-items-center" id="navbarNav">
                   <ul className="navbar-nav  mx-auto">
                     <li className="nav-item">
-                      <Link className="nav-link" to="/Home" data-toggle="collapse" data-target=".navbar-collapse.show">
+                      <Link className="nav-link" to="/" data-toggle="collapse" data-target=".navbar-collapse.show">
                         HOME <span className="sr-only">(current)</span>
                       </Link>
                     </li>
@@ -52,12 +52,12 @@ function App() {
                         TIPÓS
                       </Link>
                     </li>
-                    {/* <li className="nav-item">
-                      <a className="nav-link" href="#">
-                        MOVIMIENTOS
-                      </a>
-                    </li>
                     <li className="nav-item">
+                      <Link className="nav-link" to="/Moves">
+                        MOVIMIENTOS
+                      </Link>
+                    </li>
+                    {/* <li className="nav-item">
                       <a className="nav-link" href="#">
                         HABILIDADES
                       </a>
@@ -65,12 +65,19 @@ function App() {
                   </ul>
                 </div>
               </div>
+              <div className="col small text-left d-flex align-items-center">
+                <form className="form-inline my-2 my-lg-0">
+                    <input className="form-control mr-sm-2" type="search" placeholder="BUSCAR" aria-label="Search"/>
+                    <button className="btn btn-outline-success my-2 my-sm-0 buscar" type="submit">BUSCAR</button>
+                </form>
+              </div>
             </div>
           </nav>
           <Routes>
-            <Route path="/Home" element={infoApi()}></Route>
+            <Route path="/" element={InfoApi()}></Route>
             <Route path="/Pokemons" element={<Pokemons />}></Route>
             <Route path="/Types" element={<Types />}></Route>
+            <Route path="/Moves" element={<Moves />}></Route>
           </Routes>
         </Router>
       </header>

@@ -16,8 +16,8 @@ export default function Types() {
     useEffect(() => {
         const obtenerTypes = async () => {
             try{
-                const api = await fetch(`https://pokeapi.co/api/v2/type?limit=21&offsoffset=0`);
-                // const api = await fetch("https://pokeapi.co/api/v2/typeX?limit=21&offset=0"); //prueba de errores
+                const api = await fetch(`https://pokeapi.co/api/v2/type?limit=21`);
+                // const api = await fetch("https://pokeapi.co/api/v2/typeX?limit=21"); //prueba de errores
                 const typesApi = await api.json();
                 if (!api.ok) {
                     throw new Error(`Error ${api.status}: ${api.statusText}`);

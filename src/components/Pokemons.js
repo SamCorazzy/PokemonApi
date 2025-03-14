@@ -79,12 +79,12 @@ export default function Pokemons() {
             {/* If para mostrar el boton de anterior y siguiente dependiendo si num es 10 o mayor a 10 */}
             <div>
                 {num >= 10 ? (
-                <>
-                    <button onClick={menosPoke}>Atrás</button>
-                    <button onClick={masPoke}>Siguiente</button>
-                </>
+                <div className="masPokes">
+                    <button className="btn btn-primary" type="button" onClick={menosPoke}>Atrás</button>
+                    <button className="btn btn-primary" type="button" onClick={masPoke}>Siguiente</button>
+                </div>
                 ) : (
-                    <button onClick={masPoke}>Siguiente</button>
+                    <button className="btn btn-primary" type="button" onClick={masPoke}>Siguiente</button>
                 )}
             </div>
             

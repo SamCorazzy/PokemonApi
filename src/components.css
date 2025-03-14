@@ -1,0 +1,39 @@
+.masPokes {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 35%;
+  }
+  
+  .btn {
+    width: 200px;
+    margin-top: 40px;
+    padding: 10px 20px;
+    font-size: 30px;
+  }
+  .btn.buscar {
+    width: 100px;
+    height: 45px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center; /* Centra el texto horizontalmente */
+    align-items: center; /* Centra el texto verticalmente */
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; /* Divide en 1/4 - 2/4 - 1/4 */
+    width: 100%;
+  }
+  .letraMenu {
+    font-size: 25px;
+  }
+
+  .col.small {
+    text-align: left;
+  }
+  
+  .col.large {
+    text-align: center;
+  }
+
