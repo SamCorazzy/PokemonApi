@@ -8,9 +8,10 @@ export default function Pokemons() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+const url = "https://pokeapi.co/api/v2/pokemon/";
     
     const obtenerPoke = async (info) =>{
-        const api = await fetch(`https://pokeapi.co/api/v2/pokemon/${info}`);
+        const api = await fetch(`${url}${info}`);
         const infoPoke = await api.json();
         return infoPoke;
     }
@@ -31,7 +32,7 @@ export default function Pokemons() {
         const reqApi = async () => {
             // console.log(num);
             try {
-                const api = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=${num}`);
+                const api = await fetch(`${url}?limit=10&offset=${num}`);
                 const pokemonApi = await api.json();
                 if (!api.ok) {
                     throw new Error(`Error ${api.status}: ${api.statusText}`);

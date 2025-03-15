@@ -6,9 +6,11 @@ export default function Types() {
     const [types, setTypes] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    const url = "https://pokeapi.co/api/v2/type/";
     
     const nameTypes = async (nameType) =>{
-        const api = await fetch(`https://pokeapi.co/api/v2/type/${nameType}`)
+        const api = await fetch(`${url}${nameType}`)
         const typesApi = await api.json();
         return typesApi;
     }
@@ -16,7 +18,7 @@ export default function Types() {
     useEffect(() => {
         const obtenerTypes = async () => {
             try{
-                const api = await fetch(`https://pokeapi.co/api/v2/type?limit=21`);
+                const api = await fetch(`${url}?limit=21`);
                 // const api = await fetch("https://pokeapi.co/api/v2/typeX?limit=21"); //prueba de errores
                 const typesApi = await api.json();
                 if (!api.ok) {

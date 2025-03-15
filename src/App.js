@@ -57,11 +57,11 @@ function App() {
                         MOVIMIENTOS
                       </Link>
                     </li>
-                    {/* <li className="nav-item">
-                      <a className="nav-link" href="#">
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/Abilities">
                         HABILIDADES
-                      </a>
-                    </li> */}
+                      </Link>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -78,6 +78,7 @@ function App() {
             <Route path="/Pokemons" element={<Pokemons />}></Route>
             <Route path="/Types" element={<Types />}></Route>
             <Route path="/Moves" element={<Moves />}></Route>
+            <Route path="/Abilities" element={<Abilities />}></Route>
           </Routes>
         </Router>
       </header>

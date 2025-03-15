@@ -19,7 +19,6 @@ export default function Moves() {
         setNum(num + 30);
         window.scrollTo({ top: 0, behavior: "smooth" }); // Desplaza hacia arriba con animación
         // console.log(num);
-        
     } 
 
     const menosMoves = async () =>{
@@ -27,10 +26,15 @@ export default function Moves() {
         window.scrollTo({ top: 0, behavior: "smooth" }); // Desplaza hacia arriba con animación
     }
 
+    const obtenerDescripcionEnEspanol = (mov) => {
+        const descripcion = mov.flavor_text_entries.find(entry => entry.language.name === "es"); //entry → Es el parámetro que representa cada objeto dentro del array flavor_text_entries.
+        return descripcion ? descripcion.flavor_text : "Descripción no disponible en español.";
+    };
+
     useEffect(() => {
         const obtenerMoves = async () => {
             try{
-                const api = await fetch(`https://pokeapi.co/api/v2/move?limit=30&offset=${num}`);
+                const api = await fetch(`${url}?limit=30&offset=${num}`);
                 const moveApi = await api.json();
 
                 if(!api.ok){
@@ -56,7 +60,6 @@ export default function Moves() {
     if (loading) return <div className="alert alert-success" role="alert"> Cargando datos...</div>;
     if (error) return <div className="alert alert-danger" role="alert"> Error: {error}</div>;
 
-
     return(
         <div className="container-fluid mt-5 mb-5">
             <h1 className="mt-5">MOVIMIENTOS</h1>
@@ -66,7 +69,7 @@ export default function Moves() {
                     <div className={`card alert alert-primary mr-3 mx-auto border border-primary ${mov.type.name}`} style={{ width: '500px', height: 'auto' }} key={index}>
                         <div className="card-body">
                             <h3 className="card-title"> {mov.names[5].name} </h3>
-                            <p className="card-text"> Descripción: {mov.flavor_text_entries[42].flavor_text} </p>
+                            <p className="card-text"> Descripción: {obtenerDescripcionEnEspanol(mov)} </p>
                             <p className="card-text"> Movimiento de tipo: {Traduccion[mov.type.name]} </p>
                             <p className="card-text"> Poder: {mov.power || "--"} </p>
                             <p className="card-text"> Puntos de poder: {mov.pp} </p>
