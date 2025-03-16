@@ -58,30 +58,35 @@ export default function Abilities() {
     return(
         <div className="container-fluid mt-5 mb-5">
             <h1 className="mt-5">HABILIDADES</h1>
-            <div className="row justify-content-center mx-auto">
+            <div className="row justify-content-center mx-auto d-flex justify-content-center habilidades">
                 {ability.map((abi, index) => (
-                    <div className={`card alert alert-primary mr-3 mx-auto border border-primary`} style={{ width: '500px', height: 'auto' }} key={index}>
+                    <div className={`card alert alert-primary mr-3 mx-auto border border-primary`} style={{ width: '400px', height: 'auto' }} key={index}>
                         <div className="card-body">
                             <h3 className="card-title"> {obtenerNombreEnEspanol(abi)} (<Mayus word={abi.name}/>) </h3>
                             <p className="card-text"> Descripción: {obtenerDescripcionEnEspanol(abi)} </p>
                             <p className="card-text"> Algunos pokemon que poseen la habilidad:  </p>
-                            <table className="table table-sm">
-                                <thead>
-                                    <tr>
-                                        <th scope="col"> Num. </th>
-                                        <th scope="col"> Pokemon </th>
-                                    </tr>
-                                </thead>
-                                {abi.pokemon.slice(0, 5).map((poke,id) =>(
-                                    <tbody>
+
+                            <button  type="button" className="btn btn-primary tabla" data-toggle="collapse" data-target={`#pokemonTable-${abi.name}`}>
+                                Mostrar/Ocultar Tabla
+                            </button>
+                            <div id={`pokemonTable-${abi.name}`} className="collapse">
+                                <table className="table table-sm">
+                                    <thead>
                                         <tr>
-                                        
-                                            <th scope="row"> {id+1} </th>
-                                            <td> <Mayus word={poke.pokemon.name}/> </td>
+                                            <th scope="col"> Num. </th>
+                                            <th scope="col"> Pokemon </th>
                                         </tr>
-                                    </tbody>
-                                ))}
-                            </table>
+                                    </thead>
+                                    {abi.pokemon.slice(0, 5).map((poke,id) =>(
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row"> {id+1} </th>
+                                                <td> <Mayus word={poke.pokemon.name}/> </td>
+                                            </tr>
+                                        </tbody>
+                                    ))}
+                                </table>
+                            </div>
                         </div>
                     </div>
                 ))}

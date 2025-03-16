@@ -5,6 +5,10 @@
     padding: 0 35%;
   }
   
+  .row.habilidades {
+    font-size: 15px;
+}
+
   .btn {
     width: 200px;
     margin-top: 40px;
@@ -12,12 +16,22 @@
     font-size: 30px;
   }
   .btn.buscar {
-    width: 100px;
-    height: 45px;
-    font-size: 20px;
+    width: 80px;
+    height: 35px;
+    font-size: 15px;
     display: flex;
     justify-content: center; /* Centra el texto horizontalmente */
     align-items: center; /* Centra el texto verticalmente */
+  }
+
+  .btn.tabla {
+    margin-top: 0px;
+    width: 300px;
+    padding: 0px, 0px;
+    font-size: 15px;
+  }
+  .table{
+    font-size: 15px;
   }
 
   .grid-container {
@@ -25,10 +39,18 @@
     grid-template-columns: 1fr 2fr 1fr; /* Divide en 1/4 - 2/4 - 1/4 */
     width: 100%;
   }
+
   .letraMenu {
     font-size: 25px;
   }
 
+  .search {
+    width: 50px; /* Cambia el ancho */
+    height: 35px; /* Cambia la altura */
+    font-size: 15px; /* Cambia el tamaño del texto */
+    padding: 10px; /* Ajusta el padding */
+}
+  
   .col.small {
     text-align: left;
   }
