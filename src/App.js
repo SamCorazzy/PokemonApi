@@ -5,7 +5,6 @@ import Types from "./components/Types";
 import Moves from "./components/Moves";
 import Abilities from "./components/Abilities";
 import "./components.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 
 
@@ -73,13 +72,6 @@ function App() {
                 </li>
               </ul>
 
-              {/* Barra de búsqueda */}
-              <form className="form-inline my-2 my-lg-0">
-                <input className="form-control mr-sm-2 search" type="search" placeholder="BUSCAR" aria-label="Search" />
-                <button className="btn btn-outline-success my-2 my-sm-0 buscar" type="submit">
-                  <i className="fa-solid fa-magnifying-glass fa-lg"></i>
-                </button>
-              </form>
             </div>
           </div>
         </nav>
