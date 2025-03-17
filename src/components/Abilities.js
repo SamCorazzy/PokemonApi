@@ -15,6 +15,17 @@ export default function Abilities() {
         return resApi;
     }
 
+    const masHabi = async () =>{
+        setNum(num + 20);
+        window.scrollTo({ top: 0, behavior: "smooth" }); // Desplaza hacia arriba con animación
+        // console.log(num);
+    } 
+
+    const menosHabi = async () =>{
+        setNum( num => num >= 0 ? setNum(num - 20) : 0 );
+        window.scrollTo({ top: 0, behavior: "smooth" }); // Desplaza hacia arriba con animación
+    }
+
     useEffect(()=> {
         const infoHabili = async () =>{
             try{
@@ -60,7 +71,10 @@ export default function Abilities() {
             <h1 className="mt-5">HABILIDADES</h1>
             <div className="row justify-content-center mx-auto d-flex justify-content-center habilidades">
                 {ability.map((abi, index) => (
-                    <div className={`card alert alert-primary mr-3 mx-auto border border-primary`} style={{ width: '400px', height: 'auto' }} key={index}>
+                    <div className={`card alert alert-primary mr-3 mx-auto border border-primary`} style={{  maxWidth: '90vw', // Máximo 90% del ancho de la pantalla
+                        width: '400px', // Tamaño base en pantallas grandes
+                        minWidth: '300px', // Mínimo para evitar que se encoja demasiado
+                        height: 'auto' }} key={index}>
                         <div className="card-body">
                             <h3 className="card-title"> {obtenerNombreEnEspanol(abi)} (<Mayus word={abi.name}/>) </h3>
                             <p className="card-text"> Descripción: {obtenerDescripcionEnEspanol(abi)} </p>
@@ -90,6 +104,16 @@ export default function Abilities() {
                         </div>
                     </div>
                 ))}
+            </div>
+            <div>
+                {num >= 10 ? (
+                <div className="masPokes">
+                    <button className="btn btn-primary" type="button" onClick={menosHabi}>Atrás</button>
+                    <button className="btn btn-primary" type="button" onClick={masHabi}>Siguiente</button>
+                </div>
+                ) : (
+                    <button className="btn btn-primary" type="button" onClick={masHabi}>Siguiente</button>
+                )}
             </div>
         </div>
     )

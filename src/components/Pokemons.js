@@ -64,13 +64,13 @@ const url = "https://pokeapi.co/api/v2/pokemon/";
             <div className="row justify-content-center mx-auto">
                 {detalles.map((pokemon, index) => (
                     <div className={`card alert alert-primary mr-3 mx-auto border border-primary ${pokemon.types[0].type.name}`} style={{ width: '300px', height: 'auto' }} key={index}>
-                        <img src={pokemon.sprites.front_default} className="card-img-top mx-auto" alt={pokemon.name}  title={Mayusculas({ word: pokemon.name })} style={{ width: 'auto', height: 'auto' }} ></img>
+                        <img src={pokemon.sprites.front_default} className="card-img-top mx-auto pokemon-img" alt={pokemon.name}  title={Mayusculas({ word: pokemon.name })}></img>
                         <div className="card-body">
-                            <h5 className="card-title"> <Mayusculas word={pokemon.name} /> </h5>
+                            <h3 className="card-title"> <Mayusculas word={pokemon.name} /> </h3>
                             <p className="card-text"> Pokemon #{pokemon.id} </p>
                             <p className="card-text">Altura: {pokemon.height/10} m </p>
                             <p className="card-text">Peso: {pokemon.weight/10} Kg</p>
-                            <p className="card-text"> Tipos: {pokemon.types.map((type) => Traduccion[type.type.name]).join(', ')}</p>{/* Este método se encarga de manejar tanto los Pokémon de un solo tipo como los de múltiples tipos, mostrando los tipos correctamente en la tarjeta de cada Pokémon. */}
+                            <p className="card-text"> Tipo(s): {pokemon.types.map((type) => Traduccion[type.type.name]).join(', ')}</p>{/* Este método se encarga de manejar tanto los Pokémon de un solo tipo como los de múltiples tipos, mostrando los tipos correctamente en la tarjeta de cada Pokémon. */}
 
                         </div>
                     </div>

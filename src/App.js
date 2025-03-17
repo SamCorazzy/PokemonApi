@@ -6,6 +6,7 @@ import Moves from "./components/Moves";
 import Abilities from "./components/Abilities";
 import "./components.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState } from "react";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       </div>
     )
   }
+  const [isOpen, setIsOpen] = useState(false);
   
 
   return (
@@ -25,55 +27,62 @@ function App() {
     <header className="App-header">
        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
         <Router>
-          <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top letraMenu">
-            <div className="grid-container">
-              <div className="col small text-left d-flex align-items-center">
-                <Link className="navbar-brand" to="/">
-                  POKEMONAPI
-                </Link>
-              </div>
-              <div className="col large">
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top letraMenu">
+          <div className="container d-flex justify-content-between align-items-center">
+            {/* Logo */}
+            <Link className="navbar-brand" to="/">
+              POKEMONAPI
+            </Link>
+
+            {/* Botón de colapso */}
+            <button 
+              className="navbar-toggler" 
+              type="button" 
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+
+            {/* Menú colapsable */}
+            <div className={`collapse navbar-collapse ${isOpen ? "show" : ""} `} id="navbarSupportedContent">
+              <ul className="navbar-nav mr-auto">
+                <li className="nav-item">
+                  <Link className="nav-link" to="/" onClick={() => setIsOpen(false)}>
+                    INICIO <span className="sr-only">(current)</span>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/Pokemons" onClick={() => setIsOpen(false)}>
+                    POKEMONS
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/Types" onClick={() => setIsOpen(false)}>
+                    TIPOS
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/Moves" onClick={() => setIsOpen(false)}>
+                    MOVIMIENTOS
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/Abilities" onClick={() => setIsOpen(false)}>
+                    HABILIDADES
+                  </Link>
+                </li>
+              </ul>
+
+              {/* Barra de búsqueda */}
+              <form className="form-inline my-2 my-lg-0">
+                <input className="form-control mr-sm-2 search" type="search" placeholder="BUSCAR" aria-label="Search" />
+                <button className="btn btn-outline-success my-2 my-sm-0 buscar" type="submit">
+                  <i className="fa-solid fa-magnifying-glass fa-lg"></i>
                 </button>
-                <div className="collapse navbar-collapse text-left d-flex align-items-center" id="navbarNav">
-                  <ul className="navbar-nav  mx-auto">
-                    <li className="nav-item">
-                      <Link className="nav-link" to="/" data-toggle="collapse" data-target=".navbar-collapse.show">
-                        HOME <span className="sr-only">(current)</span>
-                      </Link>
-                    </li>
-                    <li className="nav-item">
-                      <Link className="nav-link" to="/Pokemons" data-toggle="collapse" data-target=".navbar-collapse.show">
-                        POKEMONS <span className="sr-only"></span>
-                      </Link>
-                    </li>
-                    <li className="nav-item">
-                      <Link className="nav-link" to="/Types" data-toggle="collapse" data-target=".navbar-collapse.show">
-                        TIPÓS
-                      </Link>
-                    </li>
-                    <li className="nav-item">
-                      <Link className="nav-link" to="/Moves">
-                        MOVIMIENTOS
-                      </Link>
-                    </li>
-                    <li className="nav-item">
-                      <Link className="nav-link" to="/Abilities">
-                        HABILIDADES
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="col small text-left d-flex align-items-center">
-                <form className="form-inline my-2 my-lg-0">
-                    <input className="form-control form-control-sm mr-sm-2 search" type="search" placeholder="BUSCAR" aria-label="Search"/>
-                    <button className="btn btn-outline-success my-2 my-sm-0 buscar" type="submit"><i class="fa-solid fa-magnifying-glass fa-lg"></i></button>
-                </form>
-              </div>
+              </form>
             </div>
-          </nav>
+          </div>
+        </nav>
           <Routes>
             <Route path="/" element={InfoApi()}></Route>
             <Route path="/Pokemons" element={<Pokemons />}></Route>
