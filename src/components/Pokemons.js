@@ -87,17 +87,17 @@ const obtenerPoke = async (info) => {
     return(
         <div className="container-fluid mt-5 mb-5">
         {/* Barra de búsqueda */}
-        <div className="d-flex justify-content-end flex-grow-1">
-        <button className="btn btn-secondary my-2 my-sm-0 mr-2 todos" type="button" onClick={mostrarTodos}>
-            Mostrar todos
-        </button>
-            <form className="form-inline my-2 my-lg-0" onSubmit={handleSubmit}>
-                <input className="form-control mr-2 search" type="search" placeholder="BUSCAR POKEMON" aria-label="Search" value={search} onChange={(e) => setSearch(e.target.value)}/>
-                <button className="btn btn-outline-success my-2 my-sm-0 buscar" type="submit">
-                    <i className="fa-solid fa-magnifying-glass fa-lg"></i>
-                </button>
-            </form>
-        </div>
+          <div className="d-flex justify-content-end flex-grow-1 pt-4">
+            <button className="btn btn-secondary my-2 my-sm-0 mr-2 todos" type="button" onClick={mostrarTodos}>
+                Mostrar todos
+            </button>
+              <form className="form-inline my-2 my-lg-0" onSubmit={handleSubmit}>
+                  <input className="form-control mr-2 search" type="search" placeholder="BUSCAR POKEMON" aria-label="Search" value={search} onChange={(e) => setSearch(e.target.value)}/>
+                  <button className="btn btn-outline-success my-2 my-sm-0 buscar" type="submit">
+                      <i className="fa-solid fa-magnifying-glass fa-lg"></i>
+                  </button>
+              </form>
+          </div>
             <h1 className="mt-5">Pokemon</h1>
             <div className="row justify-content-center mx-auto">
             {detalles.length > 0 ? (
@@ -129,7 +129,7 @@ const obtenerPoke = async (info) => {
                 </div>
                 ) : search.length === 0 ? (
                     <button className="btn btn-primary" type="button" onClick={masPoke}>Siguiente</button>
-                ): (<p className="text-center mt-3">No se ha encontrado ningún Pokémon.</p>)
+                ) : (<></>)
                 }
             </div>
             
