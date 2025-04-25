@@ -90,7 +90,7 @@ export default function Moves() {
                     Mostrar todos
                 </button>
                 <form className="form-inline my-2 my-lg-0" onSubmit={handleSubmit}>
-                    <input className="form-control mr-2 search" type="search" placeholder="BUSCAR MOVIMIENTO" aria-label="Search" value={search} onChange={(e) => setSearch(e.target.value)}/>
+                    <input className="form-control mr-2 search" title="SOLO NOMBRES EN INGLÉS" type="search" placeholder="BUSCAR MOVIMIENTO" aria-label="Search" value={search} onChange={(e) => setSearch(e.target.value)}/>
                     <button className="btn btn-outline-success my-2 my-sm-0 buscar" type="submit">
                         <i className="fa-solid fa-magnifying-glass fa-lg"></i>
                     </button>
